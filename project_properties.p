@@ -32,7 +32,7 @@ Vhttp://mission-rnd.github.io/javascript-basics.htm
 p16
 sVproject_status
 p17
-I1
+I2
 sVproject_gitrepo
 p18
 Vhttps://github.com/mission-rnd/mrnd-javascript
