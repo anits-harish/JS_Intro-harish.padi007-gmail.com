@@ -1,56 +1,85 @@
-/*
-OVERVIEW: 	Implement a function that sums all the numbers in the given array.
-			Example: SumOfArray([1,2,3]) should return a value of 6.
-
-INPUTS: 	arrayOfNums: An array of numbers
-
-OUTPUT: 	Sum of all the numbers
-
-ERROR CASES: If arrayOfNums is null, return NaN.
-			 If arrayOfNums is not an array, return NaN. Since Javascript is weakly typed, it is possible to
-			 invoke calls such SumOfArray("hello").
-			 You can use instanceof operator as described in the project page to check this.
-*/
 exports.SumOfArray = function(arrayOfNums){
+
+	var i=0,sum=0;
+	while(arrayOfNums[i]!=null){
+		sum=sum+arrayOfNums[i];
+		i++;
+	}
+	return sum;;
 
 
 }
 
-/*
-OVERVIEW: 	Implement a function that sums only the unique umbers in the given array.
-			Example: SumOfUniqueNumbers([2,3,3,2]) should return a value of 2+3=5.
+// Sum only the unique numbers in the array.
+// Ex: If array is [2,3,3,2], the sum is 2+3=5
 
-INPUTS: 	arrayOfNums: An array of numbers
-
-OUTPUT: 	Sum of the unique numbers
-
-ERROR CASES: If arrayOfNums is null, return NaN.
-			 If arrayOfNums is not an array, return NaN. Since Javascript is weakly typed, it is possible to
-			 invoke calls such SumOfArray("hello").
-			 You can use instanceof operator as described in the project page to check this.
-*/
+function sortNumber(a,b){
+	//this is done so as to sort the negative numbers in the array.
+   return a - b;
+}
 
 exports.SumOfUniqueNumbers = function(arrayOfNums){
 
+	arrayOfNums.sort(sortNumber);
+	var i=0;
+	a=arrayOfNums[0];
+	sum=0;
+	//after sorting compare the adjacent elements and if they are same no need to add.
+
+	while(arrayOfNums[i]!=null && arrayOfNums[i+1]!=null)
+	{
+		if(a!=arrayOfNums[i+1])
+		{
+			sum=sum+arrayOfNums;
+			a=arrayOfNums[i+1];
+		}
+		i++;
+	}
+	return sum+a;
 
 }
 
-/*
-OVERVIEW: 	Implement a function that sums the diagonal elements in the given array.
-			Example: SumOfUniqueNumbers([[11,12,13],[12,13,14],[13,14,15]]) should sum the elements at indexes (1,1),(2,2),(3,3).
-			This will be sum of 11 + 13 + 15 = 39
+//2-D array exercises
+// Given a 2-d array, verify it is of equal dimensions and return
+// the sum of diagonal elements.
 
-INPUTS: 	array2d: An array of numbers
 
-OUTPUT: 	Sum of the diagonal cells of the array.
-
-ERROR CASES: If array2d is null, return NaN.
-			 If array2d is not an array, return NaN. 
-			 If array2d is not a 2-d array, return NaN.
-			 If array2d is a 2-d array with different dimensions, return NaN.
-*/
+//Function to check the dimension of the matrix are equal
+Array.prototype.checkDimension = function() {
+	
+	var lengthOfEachColumns = this.length;
+    for(var i=0;i<lengthOfEachColumns;i++){
+		
+			if(this[i].length!=lengthOfEachColumns)
+			{
+				return false;
+			}
+		}
+		return true;
+};
 
 exports.SumOfDiagonalCells = function(array2d){
+	
+	var lengthOfEachColumns = array2d.length;
+	var sum = 0;
+	if(array2d instanceof Array)
+	{
+		//If array is not a proper matrix or having uneven rows and columns
 
+		if(array2d.checkDimension()){
+			for (var i = 0;i<lengthOfEachColumns;i++)
+			{
+				sum=sum+array2d[i][i];
+			}
+			return sum;
+		}
+		else{
+			return;
+		}
+	}
+	else{
+		return;
+	}
+	
 
 }
