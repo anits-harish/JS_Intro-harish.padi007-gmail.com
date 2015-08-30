@@ -30,11 +30,12 @@ exports.SumOfUniqueNumbers = function(arrayOfNums){
 	{
 		if(a!=arrayOfNums[i+1])
 		{
-			sum=sum+arrayOfNums;
+			sum=sum+arrayOfNums[i];
 			a=arrayOfNums[i+1];
 		}
 		i++;
 	}
+
 	return sum+a;
 
 }
